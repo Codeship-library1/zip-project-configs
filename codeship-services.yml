@@ -1,0 +1,3 @@
+tool:
+  build:
+    dockerfile: Dockerfile

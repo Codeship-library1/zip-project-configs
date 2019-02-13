@@ -1,0 +1,6 @@
+- service: tool
+  type: push
+  tag: master
+  image_name: codeship/zip-project-configs
+  image_tag: '0.1.0'
+  encrypted_dockercfg_path: dockercfg.encrypted
