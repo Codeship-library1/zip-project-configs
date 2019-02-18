@@ -18,7 +18,7 @@ REPO_NAME=$(basename -s .git `git config --get remote.origin.url`)
 FILE_COLLECTION_DIR="/${REPO_NAME}-${COMMIT_ID}"
 mkdir -p ${FILE_COLLECTION_DIR}
 
-cat meta.json | jq --arg commit_id $COMMIT_ID '. + {build: {commit_id: $commit_id}}' > ${FILE_COLLECTION_DIR}/meta.json
+cat /meta.json | jq --arg commit_id $COMMIT_ID '. + {build: {commit_id: $commit_id}}' > ${FILE_COLLECTION_DIR}/meta.json
 git show ${COMMIT_ID}:codeship-steps.yml > ${FILE_COLLECTION_DIR}/codeship-steps.yml
 git show ${COMMIT_ID}:codeship-services.yml > ${FILE_COLLECTION_DIR}/codeship-services.yml
 zip "/data/codeship-configs-${REPO_NAME}-${COMMIT_ID}.zip" ${FILE_COLLECTION_DIR}/*
